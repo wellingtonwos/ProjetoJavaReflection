@@ -14,13 +14,18 @@ public class TransformatorTest {
     Produtora produtora = new Produtora("Estados Unidos", 1935);
 
     @Test
-    public void shouldTransform() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Transformator transformator = new Transformator();
-        FilmeDTO filmeDTO = transformator.transform(filme);
+    public void shouldTransformNewMovie() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        // 1. Cria um novo objeto Filme com dados diferentes para o teste
+        Filme novoFilme = new Filme(3, "The Matrix", "1999");
 
+        // 2. Transforma o novo objeto Filme em FilmeDTO
+        Transformator transformator = new Transformator();
+        FilmeDTO filmeDTO = transformator.transform(novoFilme);
+
+        // 3. Verifica se a transformação ocorreu corretamente
         Assertions.assertInstanceOf(FilmeDTO.class, filmeDTO);
-        Assertions.assertEquals(filme.getNomeFilme(), filmeDTO.getNomeFilme());
-        Assertions.assertEquals(filme.getAnoFilme(), filmeDTO.getAnoFilme());
+        Assertions.assertEquals(novoFilme.getNomeFilme(), filmeDTO.getNomeFilme());
+        Assertions.assertEquals(novoFilme.getAnoFilme(), filmeDTO.getAnoFilme());
     }
 
     @Test
