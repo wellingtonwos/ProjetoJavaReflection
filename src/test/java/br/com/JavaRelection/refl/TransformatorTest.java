@@ -38,9 +38,9 @@ public class TransformatorTest {
 
     @Test
     public void shouldTransformWhenSomeFieldIsNull() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Filme filmeSemCPF = new Filme("Avatar");
+        Filme filmeSemNome = new Filme("Avatar");
         Transformator transformator = new Transformator();
-        FilmeDTO filmeDTOSemAno = transformator.transform(filmeSemCPF);
+        FilmeDTO filmeDTOSemAno = transformator.transform(filmeSemNome);
 
         Assertions.assertEquals(filme.getNomeFilme(), filmeDTOSemAno.getNomeFilme());
         Assertions.assertNull(filmeDTOSemAno.getAnoFilme());
